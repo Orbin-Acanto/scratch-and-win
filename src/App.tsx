@@ -33,7 +33,7 @@ const App: React.FC = () => {
               whileHover={{ y: -2 }}
               whileTap={{ scale: 0.98 }}
             >
-              Visit Our 48 Wall St Website
+              Visit The 48 Wall St Website
               <svg
                 className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1 sm:h-5 sm:w-5"
                 fill="none"
