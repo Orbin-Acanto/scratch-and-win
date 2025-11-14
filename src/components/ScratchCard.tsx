@@ -149,7 +149,7 @@ const ScratchCard: React.FC = () => {
     };
 
     fetch(
-      "https://orbin23.app.n8n.cloud/webhook-test/04c337fd-96b7-48c8-ae7d-75fe7e2e4513",
+      "https://orbin23.app.n8n.cloud/webhook/04c337fd-96b7-48c8-ae7d-75fe7e2e4513",
       {
         method: "POST",
         headers: {
@@ -191,7 +191,6 @@ const ScratchCard: React.FC = () => {
         window.localStorage.setItem(STORAGE_SCRATCH_DONE_KEY, "true");
       }
 
-      // send email + promo to backend
       sendRedemption(card?.promo);
 
       triggerHolidayConfetti();
@@ -275,65 +274,181 @@ const ScratchCard: React.FC = () => {
       </div>
 
       {showTerms && (
-        <div className="fixed inset-0 z-40 flex items-center justify-center bg-black/70 backdrop-blur-md px-4 animate-fade-in">
-          <div className="relative w-full max-w-md  bg-white shadow-2xl p-7 border border-neutral-200/40 animate-scale-in">
+        <div className="fixed inset-0 z-40 flex items-center justify-center bg-black/10 backdrop-blur-sm px-4 mt-8 animate-fade-in overflow-y-auto py-8">
+          <div className="relative w-full max-w-2xl bg-white shadow-2xl p-8 border border-neutral-200/40 animate-scale-in my-8">
             {/* Close button */}
             <button
               type="button"
               onClick={() => setShowTerms(false)}
-              className="absolute right-4 top-4 p-2 text-neutral-500 hover:text-neutral-900 hover:bg-neutral-100 transition-all cursor-pointer"
+              className="absolute right-4 top-4 p-2 text-neutral-500 hover:text-neutral-900 hover:bg-neutral-100 transition-all cursor-pointer z-10"
               aria-label="Close terms and conditions"
             >
               ✕
             </button>
 
-            <h2 className="text-center text-lg font-semibold tracking-wide text-neutral-800 mb-1">
-              Promotion Terms & Conditions
+            <h2 className="text-center text-xl font-semibold tracking-wide text-neutral-800 mb-1">
+              Contest Terms & Conditions
             </h2>
 
-            <div className="mx-auto mb-5 h-1 w-16 rounded-full bg-primary" />
+            <div className="mx-auto mb-6 h-1 w-16 rounded-full bg-primary" />
 
-            <div className="space-y-3 text-[13px] text-neutral-700 leading-relaxed text-left">
-              <p>
-                Offer is valid for new qualified event bookings only and cannot
-                be applied to existing contracts.
-              </p>
+            <div className="space-y-5 text-sm text-neutral-700 leading-relaxed text-left max-h-[60vh] overflow-y-auto pr-2">
+              <div>
+                <h3 className="font-semibold text-neutral-900 mb-2">
+                  1. Eligibility
+                </h3>
+                <p>
+                  This promotion is open to individuals 18 years or older.
+                  Employees of 48 Wall Street Events Inc, its affiliates,
+                  partners, and their immediate family members are not eligible
+                  to participate. The contest is valid only in the state of New
+                  York.
+                </p>
+              </div>
 
-              <p>
-                One scratch-card reward per email address and per event. This
-                offer is non-transferable and has no cash value.
-              </p>
+              <div>
+                <h3 className="font-semibold text-neutral-900 mb-2">
+                  2. How to Enter
+                </h3>
+                <p>
+                  Participants must access the contest webpage through the link
+                  provided in the email marketing campaign. Each participant is
+                  permitted to play the virtual scratch-off one (1) time only.
+                  Multiple entries or attempts to bypass the system may result
+                  in disqualification.
+                </p>
+              </div>
 
-              <p>
-                Prize must be redeemed at the time of contract signing and is
-                subject to date, vendor, and venue availability.
-              </p>
+              <div>
+                <h3 className="font-semibold text-neutral-900 mb-2">
+                  3. Contest Period
+                </h3>
+                <p>
+                  The contest is valid from{" "}
+                  <span className="font-medium">
+                    November 12, 2025 through November 16, 2025
+                  </span>
+                  . Entries submitted outside the contest period will not be
+                  honored.
+                </p>
+              </div>
 
-              <p>
-                Promotion cannot be combined with other discounts or offers
-                unless explicitly permitted in writing.
-              </p>
+              <div>
+                <h3 className="font-semibold text-neutral-900 mb-2">
+                  4. Prizes
+                </h3>
+                <p className="mb-3">
+                  Each virtual scratch-off reveals one (1) of four prizes,
+                  awarded at random:
+                </p>
+                <ol className="list-decimal list-inside space-y-1 ml-4 mb-3">
+                  <li>Hot Cocoa Cart</li>
+                  <li>Free Uplighting</li>
+                  <li>
+                    "Holy Cannoli Experience" (live cannoli maker at event)
+                  </li>
+                  <li>10% Off an Event Booking</li>
+                </ol>
+                <p className="mb-2 font-medium">Prizes are:</p>
+                <ul className="list-disc list-inside space-y-1 ml-4">
+                  <li>
+                    Valid only for new bookings at 48 Wall St, New York, NY
+                    10005
+                  </li>
+                  <li>
+                    Redeemable for events taking place January 2026 through
+                    March 2026
+                  </li>
+                  <li>Not transferable and not redeemable for cash</li>
+                  <li>
+                    Subject to date availability and standard venue booking
+                    policies
+                  </li>
+                </ul>
+              </div>
 
-              <p>
-                Reward is valid only for events booked within the promotional
-                period and must match the name on the scratch card.
-              </p>
+              <div>
+                <h3 className="font-semibold text-neutral-900 mb-2">
+                  5. Winner Verification & Redemption
+                </h3>
+                <p>
+                  To redeem a prize, winners must mention the promo code when
+                  booking their event at 48 Wall Street. The venue may request
+                  verification of identity or eligibility before applying the
+                  prize to a booking.
+                </p>
+              </div>
 
-              <p>
-                The venue reserves the right to modify, cancel, or withdraw this
-                promotion at any time without prior notice.
-              </p>
+              <div>
+                <h3 className="font-semibold text-neutral-900 mb-2">
+                  6. Limitations
+                </h3>
+                <ul className="list-disc list-inside space-y-1 ml-4">
+                  <li>One (1) prize per person.</li>
+                  <li>
+                    Prizes cannot be combined with any other discounts,
+                    promotions, or offers unless explicitly stated.
+                  </li>
+                  <li>
+                    The venue reserves the right to refuse prize redemption for
+                    any booking that does not meet its standard requirements.
+                  </li>
+                </ul>
+              </div>
 
-              <p>
-                By participating, you consent to being contacted regarding your
-                event inquiry and booking confirmation.
-              </p>
+              <div>
+                <h3 className="font-semibold text-neutral-900 mb-2">
+                  7. Liability
+                </h3>
+                <p>
+                  48 Wall Street Events Inc is not responsible for technical
+                  issues, lost entries, or interruptions that prevent
+                  participation. By entering, participants agree to release the
+                  venue from any claims related to the contest or prize use.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="font-semibold text-neutral-900 mb-2">
+                  8. Privacy
+                </h3>
+                <p>
+                  Any personal information collected through the contest will be
+                  used solely for administration of the promotion and will not
+                  be sold or shared.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="font-semibold text-neutral-900 mb-2">
+                  9. Right to Modify or Cancel
+                </h3>
+                <p>
+                  48 Wall Street Events Inc reserves the right to amend,
+                  suspend, or cancel the promotion if circumstances outside its
+                  control arise.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="font-semibold text-neutral-900 mb-2">
+                  10. Acceptance of Terms
+                </h3>
+                <p>
+                  Participation in the contest constitutes full acceptance of
+                  these Terms & Conditions.
+                </p>
+              </div>
             </div>
 
             {/* Footer */}
-            <p className="mt-5 text-[11px] text-neutral-500 text-center">
-              By scratching and redeeming this reward, you agree to these terms.
-            </p>
+            <div className="mt-6 pt-4 border-t border-neutral-200">
+              <p className="text-xs text-neutral-500 text-center">
+                By participating in this contest and redeeming any prize, you
+                acknowledge that you have read, understood, and agree to be
+                bound by these Terms & Conditions.
+              </p>
+            </div>
           </div>
         </div>
       )}
