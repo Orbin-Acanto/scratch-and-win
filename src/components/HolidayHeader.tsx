@@ -2,8 +2,15 @@ import React from "react";
 
 const HolidayHeader: React.FC = () => {
   return (
-    <header className="mb-10 xl:mt-48 lg:mt-54 mt-60 animate-fade-in-up">
-      <p className="font-primary text-center text-whitesmoke text-2xl sm:text-2xl md:text-3xl lg:text-4xl font-light tracking-wide uppercase">
+    <header className="mb-10 mt-48 md:mt-54 lg:mt-54 xl:mt-50 2xl:mt-54 4xl:mt-60 animate-fade-in-up">
+      <p
+        className="
+          font-primary text-center text-whitesmoke 
+          text-2xl sm:text-2xl md:text-3xl lg:text-4xl 
+          font-light tracking-wide uppercase
+          drop-shadow-[0_2px_8px_rgba(0,0,0,0.7)]
+        "
+      >
         Scratch Now And Reveal Your Prize
       </p>
     </header>

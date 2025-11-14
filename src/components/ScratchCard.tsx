@@ -236,7 +236,7 @@ const ScratchCard: React.FC = () => {
   return (
     <>
       <div className="relative z-20 animate-fade-in-up flex justify-center px-4">
-        <div className="relative w-full max-w-md sm:max-w-lg md:max-w-xl xl:max-w-2xl 2xl:max-w-3xl mx-auto">
+        <div className="relative w-full max-w-md sm:max-w-lg md:max-w-xl mx-auto 4xl:max-w-3xl">
           {card && (
             <img
               src={card.image}
@@ -336,7 +336,7 @@ const ScratchCard: React.FC = () => {
                 <p>
                   The contest is valid from{" "}
                   <span className="font-medium">
-                    November 12, 2025 through November 16, 2025
+                    November 17, 2025 through November 21, 2025
                   </span>
                   . Entries submitted outside the contest period will not be
                   honored.
