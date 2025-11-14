@@ -30,11 +30,22 @@ const ScratchCard: React.FC = () => {
   });
 
   const [showTerms, setShowTerms] = useState(false);
+  const goldImageRef = useRef<HTMLImageElement | null>(null);
+  const [goldReady, setGoldReady] = useState(false);
 
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const ctxRef = useRef<CanvasRenderingContext2D | null>(null);
   const isDrawingRef = useRef(false);
   const lastCheckRef = useRef(0);
+
+  useEffect(() => {
+    const img = new Image();
+    img.src = GOLD_COVER_SRC;
+    img.onload = () => {
+      goldImageRef.current = img;
+      setGoldReady(true);
+    };
+  }, []);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -82,7 +93,7 @@ const ScratchCard: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    if (isScratched || !cardLoaded) return;
+    if (isScratched || !cardLoaded || !goldReady) return;
 
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -105,20 +116,19 @@ const ScratchCard: React.FC = () => {
       ctx.setTransform(1, 0, 0, 1, 0, 0);
       ctx.scale(dpr, dpr);
 
-      const img = new Image();
-      img.src = GOLD_COVER_SRC;
-      img.onload = () => {
-        ctx.globalCompositeOperation = "source-over";
-        ctx.clearRect(0, 0, rect.width, rect.height);
-        ctx.drawImage(img, 0, 0, rect.width, rect.height);
-        ctxRef.current = ctx;
-      };
+      const img = goldImageRef.current;
+      if (!img) return;
+
+      ctx.globalCompositeOperation = "source-over";
+      ctx.clearRect(0, 0, rect.width, rect.height);
+      ctx.drawImage(img, 0, 0, rect.width, rect.height);
+      ctxRef.current = ctx;
     };
 
     resize();
     window.addEventListener("resize", resize);
     return () => window.removeEventListener("resize", resize);
-  }, [isScratched, cardLoaded]);
+  }, [isScratched, cardLoaded, goldReady]);
 
   const scratchAt = (clientX: number, clientY: number) => {
     const canvas = canvasRef.current;
@@ -226,7 +236,7 @@ const ScratchCard: React.FC = () => {
   return (
     <>
       <div className="relative z-20 animate-fade-in-up flex justify-center px-4">
-        <div className="relative w-full max-w-md sm:max-w-lg md:max-w-xl mx-auto">
+        <div className="relative w-full max-w-md sm:max-w-lg md:max-w-xl xl:max-w-2xl 2xl:max-w-3xl mx-auto">
           {card && (
             <img
               src={card.image}

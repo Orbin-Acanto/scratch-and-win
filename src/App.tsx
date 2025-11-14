@@ -7,10 +7,7 @@ const App: React.FC = () => {
   return (
     <>
       <Navbar />
-
-      {/* Section below navbar */}
       <div className="relative mt-[87px] min-h-[calc(100vh-87px)] overflow-hidden text-neutral-900">
-        {/* Background image */}
         <div className="absolute inset-0 -z-10">
           <img
             src="/background.png"
@@ -19,13 +16,11 @@ const App: React.FC = () => {
           />
         </div>
 
-        {/* Main content */}
         <main className="relative flex items-center justify-center px-4 py-6">
-          <section className="w-full text-center">
+          <section className="w-full max-w-6xl mx-auto text-center 2xl:py-8">
             <HolidayHeader />
             <ScratchCard />
 
-            {/* Small line under the card */}
             <p className="mt-4 text-sm sm:text-base text-whitesmoke/80">
               Prize is valid from January 2026 through March 2026.
             </p>
