@@ -27,8 +27,7 @@ const App: React.FC = () => {
 
             {/* Small line under the card */}
             <p className="mt-4 text-sm sm:text-base text-whitesmoke/80">
-              Terms &amp; conditions apply. Prize is valid from January 2026
-              through March 2026.
+              Prize is valid from January 2026 through March 2026.
             </p>
           </section>
         </main>
